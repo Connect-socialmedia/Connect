@@ -7,7 +7,13 @@ const jwtPassword = "123456";
 mongoose.connect(
 "mongodb+srv://venkateshk:venkat*2005@cluster0.mujtrmk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
 );
-
+async function handleLogin(){
+  account.createOAuth2Session(
+    'google',
+    'https://localhost:3000/',
+    'https://localhost:3000/fail'
+  )
+}
 const UserProfileSchema = mongoose.model("User", {
 name: String,
 username: String,
