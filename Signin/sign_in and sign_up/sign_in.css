@@ -1,0 +1,91 @@
+body {
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #0c0c0c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    margin-left: 700px;
+    position: fixed;
+    color: #000000;
+    background-color: white;
+    padding: 20px;
+    border: solid black 1px;
+    border-radius: 20px;
+    width: 350px; 
+    padding: 20px;
+    flex-direction: column;
+
+}
+
+h1 {
+	font-family: 'Times New Roman', Times, serif;
+    margin-bottom: 20px;
+    margin-left: 140px;
+}
+
+label {
+    display:block ;
+    margin-bottom: 7px;
+}
+
+input {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    margin-left: 10px;
+    margin-top: 20px;
+    width: 90%;
+    padding: 10px;
+    background-color: #2fbb50;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 22px;
+}
+.social-login {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.social-login button {
+    width: 48%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.google {
+    background-color: whitesmoke;
+	color: black;
+}
+
+.github {
+    background-color:whitesmoke;
+	color: black;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+#message {
+    margin-left: 80px;
+    margin-top: 20px;
+    
+}
+
+
