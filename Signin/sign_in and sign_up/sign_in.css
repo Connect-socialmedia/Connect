@@ -78,10 +78,6 @@ button {
 	color: black;
 }
 
-button:hover {
-    background-color: #218838;
-}
-
 #message {
     margin-left: 80px;
     margin-top: 20px;
