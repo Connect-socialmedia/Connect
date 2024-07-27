@@ -12,19 +12,24 @@ body {
 .typewriter {
     margin-right: 750px;
     position: relative;
-    font-size:30px ;
+    font-size: 30px;
     text-align: left;
     color: white;
-    width: 610px;
+    width: 650px;
     font-family: 'Courier New', Courier, monospace;
     white-space: nowrap;
     overflow: hidden;
-    animation: typing 2s steps(40, end), blink-caret 2s step-end infinite;
+    animation: typing 2s steps(40, end), blink-caret 0.75s step-end infinite;
 }
 
 @keyframes typing {
     from { width: 0; }
     to { width: 30%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: white; }
 }
 
 .container {
@@ -37,11 +42,9 @@ body {
     border-radius: 20px;
     box-shadow: 0 0.8px 8px rgb(255, 255, 255);
     width: 400px; 
-    padding: 20px;
     flex-direction: column;
     opacity: 0;
     animation: fadeIn 3s forwards;
-
 }
 
 @keyframes fadeIn {
@@ -56,7 +59,7 @@ h1 {
 }
 
 label {
-    display:block ;
+    display: block;
     margin-bottom: 7px;
 }
 
@@ -88,5 +91,41 @@ button:hover {
 #message {
     margin-left: 80px;
     margin-top: 20px;
-    
+}
+
+@media (max-width: 1300px)
+ {
+    body {
+        
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container {
+        margin-top: 0;
+        margin-left: 0;
+        width: 90%;
+        position: relative;
+        box-shadow: 0 0.8px 8px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+        align-items: center;
+        align-content: center;
+    }
+
+    .typewriter {
+       height: 0px;
+        width: 0px;
+
+    }
+    #message
+    {
+        text-align: center;
+    }
+    h1{
+        text-align: center;
+        align-items: center;
+        align-content: center;
+        margin-left: 0px;
+
+    }
 }
