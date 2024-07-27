@@ -1,59 +1,64 @@
 body {
-    padding: 0;
+    margin: 0;
     font-family: Arial, sans-serif;
     background-color: #0c0c0c;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
+    box-sizing: border-box;
 }
 
 .container {
-    margin-left: 700px;
-    position: fixed;
-    color: #000000;
-    background-color: white;
+    background-color: #ffffff;
     padding: 20px;
-    border: solid black 1px;
-    border-radius: 20px;
-    width: 350px; 
-    padding: 20px;
-    flex-direction: column;
-
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 h1 {
-	font-family: 'Times New Roman', Times, serif;
     margin-bottom: 20px;
-    margin-left: 140px;
+    font-size: 24px;
+    color: #333;
 }
 
 label {
-    display:block ;
-    margin-bottom: 7px;
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    text-align: left;
 }
 
 input {
-    width: 90%;
+    width: 100%;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
 }
 
 button {
-    margin-left: 10px;
-    margin-top: 20px;
-    width: 90%;
-    padding: 10px;
+    width: 100%;
+    padding: 12px;
     background-color: #2fbb50;
     color: #fff;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 22px;
+    font-size: 18px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
 }
+
+button:hover {
+    background-color: #259b3d;
+}
+
 .social-login {
     display: flex;
     justify-content: space-between;
@@ -63,25 +68,37 @@ button {
 .social-login button {
     width: 48%;
     padding: 10px;
+    background-color: #f0f0f0;
+    color: #333;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
 }
 
-.google {
-    background-color: whitesmoke;
-	color: black;
-}
-
-.github {
-    background-color:whitesmoke;
-	color: black;
+.social-login button i {
+    margin-left: 10px;
 }
 
 #message {
-    margin-left: 80px;
     margin-top: 20px;
-    
 }
 
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+        border-radius: 0;
+        max-width: 350px;
+        margin: 0 10px;
+        height: 75%;
+    }
 
+    .social-login {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .social-login button {
+        width: 100%;
+    }
+}
