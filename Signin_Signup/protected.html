@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protected Page</title>
+</head>
+<body>
+    <h1 >Welcome Back</h1>
+
+    <script>
+        async function fetchProtectedData() {
+            const token = localStorage.getItem('jwt'); 
+
+            if (!token) {
+                console.error('No token found');
+                window.location.href = '/signin.html'; 
+                return;
+            }
+
+            const response = await fetch('https://your-backend-url.com/protected', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}` 
+                }
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                console.log('Protected data:', data);
+            } else {
+                console.error('Failed to fetch protected data:', response.statusText);
+                window.location.href = '/signin.html'; 
+            }
+        }
+
+        fetchProtectedData();
+    </script>
+</body>
+</html>

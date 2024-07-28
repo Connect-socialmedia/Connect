@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="sign_up.css">
+</head>
+<body>
+    <div class="typewriter">
+        <p> <span style="font-size: 60px;"> "</span>Coming together is a beginning,</p><p>staying together is progress,</p><p>and working together is success.<span style="font-size: 60px;">"</span></p>
+    </div>
+    <div class="container">
+        <form id="signupForm">
+            <h1> Sign Up </h1>
+            <label for="username">Name:</label>
+            <input type="text" id="name" name="username" placeholder="Enter Name" required>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter Username" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email"  placeholder="Enter email" required>
+            <label for="username">DOB:</label>
+            <input type="date" id="dob" name="username"  placeholder="Enter date of Birth" required>
+            <label for="password">Create Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter Password" required >
+            <label for="password">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="password"  placeholder="Conform password" required>
+            <button type="submit" id="signupButton" disabled>Sign Up</button>
+        </form>
+        <div id="message">
+           <p>Already have an account? <a href="sign_in.html" style="color: rgb(66, 66, 255);">Sign in</a></p>
+        </div>
+    </div>
+    <script>
+        const password = document.getElementById('password');
+        const confirmPassword = document.getElementById('confirmPassword');
+        const signupButton = document.getElementById('signupButton');
+
+        function checkPasswords() {
+            if (password.value === confirmPassword.value && password.value !== '') {
+                signupButton.disabled = false;
+            } else {
+                signupButton.disabled = true;
+            }
+        }
+
+        password.addEventListener('input', checkPasswords);
+        confirmPassword.addEventListener('input', checkPasswords);
+
+        document.getElementById('signupForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const dob = document.getElementById('dob').value;
+            const password = document.getElementById('password').value;
+
+            const response = await fetch('http://localhost:3000/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name:'name',username:'username', email:'email', dob:'dob', password:'password' })
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                console.log('Sign up successful:', result);
+            } else {
+                console.error('Sign up failed:', response.statusText);
+            }
+        });
+    </script>
+</body>
+</html>

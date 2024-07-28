@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <link rel="stylesheet" href="sign_in.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="container">
+        <form id="signIn-form">
+            <h1>Sign In</h1>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Username or Email" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <button type="submit">Sign In</button>
+            <div class="social-login">
+                <button type="button" class="google">Google <i class="fa fa-google"></i></button>
+                <button type="button" class="github">GitHub <i class="fa fa-github"></i></button>
+            </div>
+        </form>
+        <div id="message">
+            <p>Not yet registered? <a href="sign_up.html">Sign Up</a></p>
+        </div>
+    </div>
+    <script>
+           const token = localStorage.getItem('jwt');
+        if (token) {
+            window.location.href = 'Signin/protected.html';
+        }
+
+        document.getElementById('signIn-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            const response = await fetch('http://localhost:3000/signin', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                localStorage.setItem('jwt', result.token); 
+                console.log('Login successful:', result);
+                window.location.href = 'Signin/protected.html'; 
+            } else {
+                console.error('Login failed:', response.statusText);
+            }
+        });
+    </script>
+</body>
+</html>
